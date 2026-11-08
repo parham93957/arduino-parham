@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="Arduino Parham؛ آموزش رایگان آردوینو به زبان فارسی، پروژه‌های عملی، راه‌اندازی سنسورها، نقشه سیم‌کشی و کدهای کامل Arduino.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arduino Parham | آموزش رایگان آردوینو">
+<meta property="og:description" content="آموزش آردوینو از مقدماتی تا پروژه‌های عملی؛ همراه با سیم‌کشی و کد کامل.">
+<meta name="twitter:card" content="summary">
+
+<title>Arduino Parham | آکادمی آردوینو</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#080d18;--panel:#101a2b;--panel2:#0c1422;--line:#1d3049;--text:#edf6ff;--muted:#91a5bd;--cyan:#19d5ff;--blue:#477bff;--green:#36e6a1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#10294a 0,transparent 38%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.8}
+a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080d18dc;backdrop-filter:blur(16px);border-bottom:1px solid #1a2b42}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:20px;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06101d;font-size:22px;box-shadow:0 0 28px #19d5ff55}.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:var(--cyan)}
+.btn{border:0;border-radius:12px;padding:11px 17px;background:linear-gradient(120deg,var(--cyan),#648bff);color:#06101d;font:800 14px Vazirmatn;cursor:pointer;box-shadow:0 8px 28px #19d5ff25}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn.secondary{background:#14243a;color:var(--text);border:1px solid var(--line);box-shadow:none}
+.hero{padding:78px 0 54px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);border:1px solid #1b7891;background:#0b2634;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700}.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.25;margin:18px 0 14px;font-weight:900}.glow{color:var(--cyan);text-shadow:0 0 28px #19d5ff55}.hero p{color:var(--muted);font-size:17px;max-width:620px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.hero-art{min-height:300px;border:1px solid #1b4560;border-radius:28px;background:linear-gradient(145deg,#10283c,#0b1323 65%);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 20px 70px #0008}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #19d5ff30;border-radius:50%;width:280px;height:280px}.hero-art:after{width:380px;height:380px}.chip{width:145px;height:145px;border-radius:24px;background:linear-gradient(145deg,#172e47,#0b1628);border:1px solid #2a7891;display:grid;place-items:center;color:var(--cyan);font-size:54px;box-shadow:0 0 60px #19d5ff30;z-index:1}.circuit{position:absolute;color:#2a91b2;font-size:12px;opacity:.8}.c1{top:18%;right:12%}.c2{bottom:18%;left:10%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 72px}.stat{padding:17px 20px;background:#0d1726;border:1px solid var(--line);border-radius:16px}.stat strong{display:block;color:var(--cyan);font-size:24px}.stat span{color:var(--muted);font-size:13px}
+section{padding:20px 0 58px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}.section-head h2{margin:0;font-size:27px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.search{flex:1;min-width:220px;background:#0d1726;border:1px solid var(--line);border-radius:12px;padding:12px 15px;color:var(--text);font:14px Vazirmatn;outline:none}.search:focus,input:focus,textarea:focus{border-color:var(--cyan)!important;box-shadow:0 0 0 3px #19d5ff18}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:#0d1726;color:var(--muted);border-radius:99px;padding:9px 14px;font:13px Vazirmatn;cursor:pointer}.filter.active{background:#103448;color:var(--cyan);border-color:#1b7891}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(160deg,#111e30,#0c1421);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#23718c;box-shadow:0 14px 38px #0005}.thumb{height:150px;background:radial-gradient(circle at 50% 40%,#17415a,#0b1728 70%);display:grid;place-items:center;font-size:48px;color:var(--cyan);position:relative}.thumb small{position:absolute;top:12px;right:12px;background:#07111dcc;border:1px solid #28516a;padding:3px 10px;border-radius:99px;font-size:11px;color:#8cecff}.card-body{padding:17px}.card h3{margin:0 0 8px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:13px;min-height:48px}.meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;color:#7f96ae;font-size:12px}.read{color:var(--cyan);font-weight:700}
+.empty{display:none;text-align:center;padding:40px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px}.about-box{background:#0d1726;border:1px solid var(--line);border-radius:18px;padding:24px}.about-box h3{margin-top:0}.about-box p{color:var(--muted);font-size:14px}.steps{display:grid;gap:12px}.step{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}.num{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;background:#103448;color:var(--cyan);font-weight:800}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}.footer-in{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.modal{display:none;position:fixed;inset:0;z-index:30;background:#02060ddd;backdrop-filter:blur(8px);padding:18px;overflow:auto}.modal.show{display:grid;place-items:center}.dialog{width:min(620px,100%);background:#0d1726;border:1px solid #24506a;border-radius:20px;padding:24px;box-shadow:0 20px 80px #000b}.dialog h2{margin-top:0}.formgrid{display:grid;gap:12px}.field{display:grid;gap:5px;color:var(--muted);font-size:13px}.field input,.field textarea,.field select{width:100%;background:#080f1c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;font:14px Vazirmatn;outline:none}.field textarea{min-height:85px;resize:vertical}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}.lesson-modal .dialog{width:min(800px,100%)}.video{aspect-ratio:16/9;background:#030914;border-radius:14px;overflow:hidden;margin:14px 0}.video iframe{width:100%;height:100%;border:0}.video-placeholder{height:100%;display:grid;place-items:center;color:var(--muted);padding:20px;text-align:center}.lesson-desc{color:var(--muted);white-space:pre-wrap}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-art{min-height:230px}.grid{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.hero h1{font-size:39px}.section-head{align-items:start;flex-direction:column}.nav{height:66px}.brand{font-size:17px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Arduino Parham",
+  "description": "آموزش رایگان آردوینو به زبان فارسی، پروژه‌های عملی، سنسورها و کدنویسی.",
+  "inLanguage": "fa"
+}
+</script>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#"><span class="logo">⌘</span><span>ARDUINO <span class="glow">PARHAM</span></span></a>
+<nav class="navlinks"><a href="#courses">آموزش‌ها</a><a href="#about">درباره سایت</a><a href="#how">شروع یادگیری</a></nav>
+<button class="btn" onclick="openAdd()">＋ افزودن آموزش</button>
+</div></header>
+<main class="wrap">
+<div class="hero">
+<div><span class="eyebrow">⚡ دنیای خلاقیت و الکترونیک</span><h1>ایده‌هات رو به<br><span class="glow">واقعیت تبدیل کن.</span></h1>
+<p>اینجا قراره آردوینو رو قدم‌به‌قدم یاد بگیری؛ از اولین اتصال LED تا ساخت پروژه‌های هوشمند. آموزش متنی، ویدئو و کدها، همه یک‌جا.</p>
+<div class="hero-actions"><a class="btn" href="#courses">شروع آموزش‌ها ←</a><button class="btn secondary" onclick="openAdd()">＋ انتشار آموزش جدید</button></div></div>
+<div class="hero-art"><span class="circuit c1">DIGITAL INPUT / OUTPUT</span><span class="circuit c2">IDEAS → PROJECTS</span><div class="chip">⌘</div></div>
+</div>
+<div class="stats"><div class="stat"><strong id="count">۳</strong><span>آموزش نمونه</span></div><div class="stat"><strong>۰ تا ۱۰۰</strong><span>از مبتدی تا پروژه‌محور</span></div><div class="stat"><strong>رایگان</strong><span>دسترسی آزاد برای همه</span></div></div>
+<section id="courses"><div class="section-head"><div><h2>کتابخانه آموزش‌ها</h2><p>یک موضوع انتخاب کن و دست‌به‌کار شو.</p></div></div>
+<div class="tools"><input id="search" class="search" placeholder="جست‌وجو بین آموزش‌ها..." oninput="render()"><div class="filters" id="filters"><button class="filter active" data-cat="همه" onclick="setCat('همه',this)">همه</button><button class="filter" data-cat="مقدماتی" onclick="setCat('مقدماتی',this)">مقدماتی</button><button class="filter" data-cat="سنسورها" onclick="setCat('سنسورها',this)">سنسورها</button><button class="filter" data-cat="پروژه‌ها" onclick="setCat('پروژه‌ها',this)">پروژه‌ها</button></div></div>
+<div class="grid" id="cards"></div><div class="empty" id="empty">آموزشی با این مشخصات پیدا نشد.</div>
+</section>
+<section id="about"><div class="section-head"><div><h2>اینجا چه خبره؟</h2><p>یک مسیر ساده برای ساختن چیزهای واقعی.</p></div></div><div class="about">
+<div class="about-box"><h3>🔧 یادگیری با ساختن</h3><p>به‌جای حفظ‌کردن مطالب، مدار می‌بندیم، کد می‌نویسیم، آزمایش می‌کنیم و از اشتباه‌ها یاد می‌گیریم. هر آموزش می‌تواند شامل توضیح، لیست قطعات، نقشه اتصال و ویدئو باشد.</p></div>
+<div class="about-box" id="how"><h3>🚀 مسیر پیشنهادی</h3><div class="steps"><div class="step"><span class="num">۱</span> آشنایی با آردوینو و قطعات پایه</div><div class="step"><span class="num">۲</span> شناخت ورودی‌ها، خروجی‌ها و سنسورها</div><div class="step"><span class="num">۳</span> ساخت پروژه و ترکیب چند ماژول</div><div class="step"><span class="num">۴</span> اشتراک‌گذاری پروژه و کدها</div></div></div></div></section>
+</main>
+<footer><div class="wrap footer-in"><span>© <span id="year"></span> Arduino Parham</span><span>ساخته‌شده برای عاشقان الکترونیک ⚡</span></div></footer>
+<div class="modal" id="addModal"><div class="dialog"><h2>＋ افزودن آموزش تازه</h2><p style="color:var(--muted);font-size:13px">این نسخه، آموزش‌ها را در همین مرورگر ذخیره می‌کند.</p>
+<form id="addForm" class="formgrid"><label class="field">عنوان آموزش<input name="title" required maxlength="70" placeholder="مثلاً راه‌اندازی سنسور اولتراسونیک"></label>
+<label class="field">دسته‌بندی<select name="cat"><option>مقدماتی</option><option>سنسورها</option><option>پروژه‌ها</option></select></label>
+<label class="field">توضیح کوتاه<textarea name="desc" required maxlength="220" placeholder="در این آموزش چه چیزی یاد می‌گیریم؟"></textarea></label>
+<label class="field">لینک ویدئو (اختیاری؛ لینک Embed یوتیوب)<input name="video" placeholder="https://www.youtube.com/embed/VIDEO_ID"></label>
+<label class="field">متن کامل آموزش / نکات اتصال<textarea name="body" placeholder="قطعات موردنیاز، سیم‌کشی و مراحل اجرا..."></textarea></label>
+<div class="form-actions"><button type="button" class="btn secondary" onclick="closeAdd()">انصراف</button><button class="btn" type="submit">ذخیره آموزش</button></div></form></div></div>
+<div class="modal lesson-modal" id="lessonModal"><div class="dialog"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><h2 id="lessonTitle"></h2><button class="btn secondary" onclick="closeLesson()">بستن ✕</button></div><div id="lessonVideo" class="video"></div><p id="lessonDesc" class="lesson-desc"></p><div id="lessonBody" class="lesson-desc"></div></div></div>
+<script>
+const starter=[
+{id:1,title:"اولین قدم با آردوینو",cat:"مقدماتی",desc:"با برد Arduino Uno آشنا شو و اولین برنامه‌ات را اجرا کن.",body:"قطعات موردنیاز: برد Arduino Uno، کابل USB و یک LED برای تمرین.\\n\\nابتدا Arduino IDE را نصب کن، برد و پورت صحیح را انتخاب کن و مثال Blink را باز کن. کد را آپلود کن و چشمک‌زدن LED روی برد را ببین.\\n\\nنکته: قبل از تغییر سیم‌کشی، برق مدار را قطع کن.",video:"",icon:"⌘",time:"۵ دقیقه"},
+{id:2,title:"کار با سنسور اولتراسونیک HC-SR04",cat:"سنسورها",desc:"اندازه‌گیری فاصله اجسام با ارسال و دریافت امواج صوتی.",body:"قطعات: Arduino Uno و سنسور HC-SR04.\\n\\nVCC سنسور به 5V، GND به GND، پایه Trig به یک پایه دیجیتال و Echo به پایه دیجیتال دیگر وصل می‌شود.\\n\\nبا ارسال پالس به Trig و اندازه‌گیری زمان برگشت Echo می‌توان فاصله را محاسبه کرد.",video:"",icon:"◉",time:"۸ دقیقه"},
+{id:3,title:"ساخت چراغ چشمک‌زن LED",cat:"پروژه‌ها",desc:"یک پروژه ساده برای یادگیری خروجی دیجیتال و کنترل LED.",body:"قطعات: Arduino Uno، یک LED و مقاومت مناسب.\\n\\nپایه مثبت LED را از طریق مقاومت به پایه دیجیتال 13 و پایه منفی را به GND وصل کن. سپس مثال Blink را اجرا کن.\\n\\nبا تغییر مقدار delay سرعت چشمک‌زدن را عوض کن.",video:"",icon:"✦",time:"۶ دقیقه"}
+];
+let lessons=[...starter,...JSON.parse(localStorage.getItem("parhamLessons")||"[]")],active="همه";
+const faNum=n=>new Intl.NumberFormat("fa-IR").format(n);
+function render(){const q=document.getElementById("search").value.trim().toLowerCase();const list=lessons.filter(x=>(active==="همه"||x.cat===active)&&(`${x.title} ${x.desc} ${x.cat}`).toLowerCase().includes(q));document.getElementById("cards").innerHTML=list.map(x=>`<article class="card"><div class="thumb"><small>${x.cat}</small>${x.icon||"⌘"}</div><div class="card-body"><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p><div class="meta"><span>⏱ ${esc(x.time||"آموزش")}</span><a class="read" href="#" onclick="openLesson(${x.id});return false">مشاهده آموزش ←</a></div></div></article>`).join("");document.getElementById("empty").style.display=list.length?"none":"block";document.getElementById("count").textContent=faNum(lessons.length)}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function setCat(c,b){active=c;document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()}
+function openAdd(){document.getElementById("addModal").classList.add("show")}function closeAdd(){document.getElementById("addModal").classList.remove("show")}
+function openLesson(id){const x=lessons.find(y=>y.id===id);if(!x)return;document.getElementById("lessonTitle").textContent=x.title;document.getElementById("lessonDesc").textContent=x.desc;document.getElementById("lessonBody").textContent=x.body||"برای این آموزش هنوز توضیحات تکمیلی ثبت نشده است.";const v=document.getElementById("lessonVideo");if(x.video&&/^https:\/\/www\.youtube\.com\/embed\/[A-Za-z0-9_-]+/.test(x.video)){v.innerHTML=`<iframe src="${esc(x.video)}" title="ویدئوی آموزشی" allowfullscreen loading="lazy"></iframe>`}else{v.innerHTML='<div class="video-placeholder">🎬<br>هنوز ویدئویی برای این آموزش ثبت نشده است.</div>'}document.getElementById("lessonModal").classList.add("show")}
+function closeLesson(){document.getElementById("lessonModal").classList.remove("show");document.getElementById("lessonVideo").innerHTML=""}
+document.getElementById("addForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);const x={id:Date.now(),title:f.get("title"),cat:f.get("cat"),desc:f.get("desc"),video:f.get("video"),body:f.get("body"),icon:"⌘",time:"جدید"};lessons.push(x);localStorage.setItem("parhamLessons",JSON.stringify(lessons.filter(y=>!starter.some(z=>z.id===y.id))));e.target.reset();closeAdd();active="همه";document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat==="همه"));render();document.getElementById("courses").scrollIntoView()});
+document.getElementById("year").textContent=new Date().getFullYear();render();
+</script>
+</body></html>
