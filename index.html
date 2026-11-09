@@ -116,7 +116,7 @@ header{
 }
 .circuit{position:absolute;color:#268ab2;font-size:12px}
 .c1{top:18%;right:12%}.c2{bottom:18%;left:10%}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 72px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 35px}
 .stat{
  padding:17px 20px;background:#fff;border:1px solid var(--line);
  border-radius:16px;box-shadow:var(--shadow);
@@ -203,6 +203,41 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 .comment-date{font-size:11px;color:var(--muted)}
 .comment-text{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:7px;color:#405c75;font-size:14px}
 .comment-status{font-size:13px;color:var(--muted);margin:8px 0}
+
+/* نوار متحرک آموزش‌های جدید */
+.ticker-box{
+ display:flex;align-items:center;gap:14px;
+ background:#fff;border:1px solid #cce9f7;
+ border-radius:16px;padding:12px 15px;margin:0 0 38px;
+ box-shadow:var(--shadow);overflow:hidden;
+}
+.ticker-label{
+ flex:0 0 auto;background:linear-gradient(120deg,var(--blue),var(--cyan));
+ color:white;padding:7px 13px;border-radius:10px;
+ font-size:12px;font-weight:800;
+}
+.ticker-window{flex:1;min-width:0;overflow:hidden}
+.ticker-track{
+ display:flex;width:max-content;align-items:center;
+ animation:tickerMove 32s linear infinite;
+}
+.ticker-group{display:flex;align-items:center;flex-shrink:0}
+.ticker-item{
+ border:0;background:transparent;color:#1765b8;
+ font:700 13px Vazirmatn;padding:5px 18px;
+ white-space:nowrap;cursor:pointer;
+}
+.ticker-item:hover{color:var(--cyan)}
+.ticker-dot{color:#00a9d6;font-size:18px}
+.ticker-window:hover .ticker-track{animation-play-state:paused}
+.ticker-empty{color:var(--muted);font-size:13px}
+@keyframes tickerMove{
+ from{transform:translateX(0)}
+ to{transform:translateX(50%)}
+}
+@media(prefers-reduced-motion:reduce){
+ .ticker-track{animation:none}
+}
 @media(max-width:800px){
  .hero{grid-template-columns:1fr;padding-top:48px}
  .hero-art{min-height:230px}
@@ -219,6 +254,9 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
  .section-head{align-items:start;flex-direction:column}
  .nav{min-height:66px}
  .brand{font-size:17px}
+ .ticker-box{gap:8px;padding:9px}
+ .ticker-label{font-size:11px;padding:6px 9px}
+ .ticker-item{font-size:12px;padding:5px 12px}
 }
 </style>
 </head>
@@ -257,6 +295,19 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <div class="stat"><strong id="count">۳</strong><span>آموزش موجود</span></div>
 <div class="stat"><strong>۰ تا ۱۰۰</strong><span>از مبتدی تا پروژه‌محور</span></div>
 <div class="stat"><strong>رایگان</strong><span>دسترسی آزاد برای همه</span></div>
+</div>
+
+<!-- نوار متحرک عنوان آموزش‌ها -->
+<div class="ticker-box">
+<div class="ticker-label">⚡ آموزش‌های جدید</div>
+<div class="ticker-window">
+<div class="ticker-track" id="tickerTrack">
+<div class="ticker-group" id="tickerGroup">
+<span class="ticker-empty">در حال دریافت آموزش‌ها...</span>
+</div>
+<div class="ticker-group" id="tickerGroupCopy" aria-hidden="true"></div>
+</div>
+</div>
 </div>
 
 <section id="courses">
@@ -422,6 +473,35 @@ function esc(s) {
  }[c]));
 }
 
+function updateTicker() {
+ const group = document.getElementById("tickerGroup");
+ const copy = document.getElementById("tickerGroupCopy");
+
+ if (!group || !copy) return;
+
+ // آموزش‌های دیتابیس در ابتدای فهرست قرار دارند.
+ const latest = [...databaseLessons, ...starter].slice(0,8);
+
+ if (!latest.length) {
+  group.innerHTML = '<span class="ticker-empty">هنوز آموزشی منتشر نشده است.</span>';
+  copy.innerHTML = "";
+  return;
+ }
+
+ const items = latest.map(x => `
+  <button class="ticker-item" type="button"
+   onclick="openLesson('${esc(x.id)}')">
+   ${esc(x.title)}
+  </button>
+  <span class="ticker-dot">✦</span>
+ `).join("");
+
+ group.innerHTML = items;
+ copy.innerHTML = items;
+
+ // وقتی فقط یک عنوان وجود دارد، حرکت نوار همچنان روان می‌ماند.
+}
+
 function updateAdminButton() {
  const b = document.getElementById("adminButton");
  b.textContent = currentUser ? "خروج مدیر" : "ورود مدیر";
@@ -494,6 +574,7 @@ function render() {
 
  document.getElementById("empty").style.display = list.length ? "none" : "block";
  document.getElementById("count").textContent = faNum(lessons.length);
+ updateTicker();
 }
 
 async function loadLessons() {
@@ -504,6 +585,7 @@ async function loadLessons() {
 
  if (error) {
   console.error("Lessons error:",error);
+  updateTicker();
   return;
  }
 
