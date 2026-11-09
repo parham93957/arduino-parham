@@ -4,93 +4,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d18">
-<meta name="description" content="Arduino Parham؛ آموزش رایگان آردوینو به زبان فارسی.">
+<meta name="theme-color" content="#f2f8ff">
+<meta name="description" content="Arduino Parham؛ آموزش رایگان آردوینو به زبان فارسی، از مبانی و برنامه‌نویسی تا سنسورها و پروژه‌های عملی.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://parham93957.github.io/arduino-parham/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arduino Parham | آکادمی آردوینو">
+<meta property="og:description" content="آموزش رایگان آردوینو، سنسورها و پروژه‌های عملی به زبان فارسی.">
+<meta property="og:url" content="https://parham93957.github.io/arduino-parham/">
 <title>Arduino Parham | آکادمی آردوینو</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-:root{--bg:#080d18;--panel:#101a2b;--panel2:#0c1422;--line:#1d3049;--text:#edf6ff;--muted:#91a5bd;--cyan:#19d5ff;--blue:#477bff;--green:#36e6a1}
+:root{
+ --bg:#f2f8ff;
+ --panel:#fff;
+ --panel2:#eaf4ff;
+ --line:#dceafa;
+ --text:#173451;
+ --muted:#71869e;
+ --cyan:#00a9d6;
+ --blue:#2675ed;
+ --green:#16ad83;
+ --shadow:0 12px 32px rgba(37,103,170,.09);
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 80% 0%,#10294a 0,transparent 38%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.8}
+body{
+ margin:0;
+ background:
+ radial-gradient(ellipse at 85% 0%,#d9f3ff 0,transparent 38%),
+ radial-gradient(ellipse at 0% 35%,#e6efff 0,transparent 35%),
+ var(--bg);
+ color:var(--text);
+ font-family:Vazirmatn,Tahoma,sans-serif;
+ line-height:1.8;
+}
 a{color:inherit;text-decoration:none}
+button,input,textarea,select{font-family:inherit}
+button{cursor:pointer}
 .wrap{width:min(1160px,92%);margin:auto}
-header{position:sticky;top:0;z-index:10;background:#080d18dc;backdrop-filter:blur(16px);border-bottom:1px solid #1a2b42}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#ffffffdf;
+ backdrop-filter:blur(16px);
+ border-bottom:1px solid var(--line);
+}
+.nav{
+ min-height:74px;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:18px;
+}
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:20px}
-.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06101d;font-size:22px}
+.logo{
+ width:43px;height:43px;border-radius:14px;
+ display:grid;place-items:center;
+ background:linear-gradient(135deg,var(--cyan),var(--blue));
+ color:white;font-size:23px;
+ box-shadow:0 7px 17px #2675ed35;
+}
 .navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}
-.navlinks a:hover{color:var(--cyan)}
-.btn{border:0;border-radius:12px;padding:11px 17px;background:linear-gradient(120deg,var(--cyan),#648bff);color:#06101d;font:800 14px Vazirmatn;cursor:pointer}
-.btn.secondary{background:#14243a;color:var(--text);border:1px solid var(--line)}
-.hero{padding:78px 0 54px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
-.eyebrow{display:inline-flex;color:var(--cyan);border:1px solid #1b7891;background:#0b2634;padding:5px 12px;border-radius:99px;font-size:12px}
-.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.25;margin:18px 0 14px;font-weight:900}
-.glow{color:var(--cyan);text-shadow:0 0 28px #19d5ff55}
-.hero p{color:var(--muted);font-size:17px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.hero-art{min-height:300px;border:1px solid #1b4560;border-radius:28px;background:linear-gradient(145deg,#10283c,#0b1323 65%);display:grid;place-items:center;position:relative;overflow:hidden}
-.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #19d5ff30;border-radius:50%;width:280px;height:280px}
+.navlinks a:hover{color:var(--blue)}
+.btn{
+ border:0;border-radius:13px;padding:11px 18px;
+ background:linear-gradient(120deg,var(--blue),var(--cyan));
+ color:white;font:800 14px Vazirmatn;
+ cursor:pointer;transition:.2s;
+ box-shadow:0 6px 16px #2675ed25;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 9px 20px #2675ed35}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.btn.secondary{
+ background:white;color:var(--blue);
+ border:1px solid var(--line);box-shadow:none;
+}
+.hero{
+ padding:76px 0 48px;
+ display:grid;grid-template-columns:1.15fr .85fr;
+ gap:40px;align-items:center;
+}
+.eyebrow{
+ display:inline-flex;color:#0787b9;
+ border:1px solid #b8e9f5;
+ background:#e3f8ff;padding:5px 13px;
+ border-radius:99px;font-size:12px;font-weight:700;
+}
+.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.35;margin:18px 0 14px;font-weight:900}
+.glow{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero-art{
+ min-height:300px;border:1px solid #cfe7fb;border-radius:28px;
+ background:linear-gradient(145deg,#e1f7ff,#e8efff 65%,#fff);
+ display:grid;place-items:center;position:relative;overflow:hidden;
+ box-shadow:var(--shadow);
+}
+.hero-art:before,.hero-art:after{
+ content:"";position:absolute;border:1px solid #2675ed25;
+ border-radius:50%;width:280px;height:280px;
+}
 .hero-art:after{width:380px;height:380px}
-.chip{width:145px;height:145px;border-radius:24px;background:linear-gradient(145deg,#172e47,#0b1628);border:1px solid #2a7891;display:grid;place-items:center;color:var(--cyan);font-size:54px;z-index:1}
-.circuit{position:absolute;color:#2a91b2;font-size:12px}
+.chip{
+ width:145px;height:145px;border-radius:24px;
+ background:linear-gradient(145deg,#fff,#e3f4ff);
+ border:1px solid #b9dafa;display:grid;place-items:center;
+ color:var(--blue);font-size:54px;z-index:1;
+ box-shadow:var(--shadow);
+}
+.circuit{position:absolute;color:#268ab2;font-size:12px}
 .c1{top:18%;right:12%}.c2{bottom:18%;left:10%}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 72px}
-.stat{padding:17px 20px;background:#0d1726;border:1px solid var(--line);border-radius:16px}
-.stat strong{display:block;color:var(--cyan);font-size:24px}
+.stat{
+ padding:17px 20px;background:#fff;border:1px solid var(--line);
+ border-radius:16px;box-shadow:var(--shadow);
+}
+.stat strong{display:block;color:var(--blue);font-size:24px}
 .stat span{color:var(--muted);font-size:13px}
 section{padding:20px 0 58px}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
 .section-head h2{margin:0;font-size:27px}
 .section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
 .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-.search{flex:1;min-width:220px;background:#0d1726;border:1px solid var(--line);border-radius:12px;padding:12px 15px;color:var(--text);font:14px Vazirmatn}
+.search{
+ flex:1;min-width:220px;background:#fff;border:1px solid var(--line);
+ border-radius:12px;padding:12px 15px;color:var(--text);font:14px Vazirmatn;
+}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter{border:1px solid var(--line);background:#0d1726;color:var(--muted);border-radius:99px;padding:9px 14px;font:13px Vazirmatn;cursor:pointer}
-.filter.active{background:#103448;color:var(--cyan);border-color:#1b7891}
+.filter{
+ border:1px solid var(--line);background:#fff;color:var(--muted);
+ border-radius:99px;padding:9px 14px;font:13px Vazirmatn;cursor:pointer;
+}
+.filter.active{background:#e3f8ff;color:#087da8;border-color:#9bdff0}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:linear-gradient(160deg,#111e30,#0c1421);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:#23718c}
-.thumb{height:150px;background:radial-gradient(circle at 50% 40%,#17415a,#0b1728 70%);display:grid;place-items:center;font-size:48px;color:var(--cyan);position:relative}
-.thumb small{position:absolute;top:12px;right:12px;background:#07111dcc;border:1px solid #28516a;padding:3px 10px;border-radius:99px;font-size:11px;color:#8cecff}
+.card{
+ background:#fff;border:1px solid var(--line);border-radius:18px;
+ overflow:hidden;transition:.2s;box-shadow:var(--shadow);
+}
+.card:hover{transform:translateY(-4px);border-color:#8bcbe8}
+.thumb{
+ height:150px;background:radial-gradient(circle at 50% 40%,#d9f5ff,#edf3ff 70%);
+ display:grid;place-items:center;font-size:48px;color:var(--blue);position:relative;
+}
+.thumb small{
+ position:absolute;top:12px;right:12px;background:#fff;
+ border:1px solid var(--line);padding:3px 10px;border-radius:99px;
+ font-size:11px;color:#087da8;
+}
 .card-body{padding:17px}
 .card h3{margin:0 0 8px;font-size:18px}
 .card p{margin:0;color:var(--muted);font-size:13px;min-height:48px}
-.meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;color:#7f96ae;font-size:12px}
-.read{color:var(--cyan);font-weight:700}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;color:var(--muted);font-size:12px}
+.read{color:var(--blue);font-weight:700}
 .empty{text-align:center;padding:40px;color:var(--muted);border:1px dashed var(--line);border-radius:16px;display:none}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.about-box{background:#0d1726;border:1px solid var(--line);border-radius:18px;padding:24px}
+.about-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
 .about-box h3{margin-top:0}
 .about-box p{color:var(--muted);font-size:14px}
 .steps{display:grid;gap:12px}
 .step{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}
-.num{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;background:#103448;color:var(--cyan);font-weight:800}
+.num{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;background:#e3f8ff;color:var(--blue);font-weight:800}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
 .footer-in{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.modal{display:none;position:fixed;inset:0;z-index:30;background:#02060ddd;backdrop-filter:blur(8px);padding:18px;overflow:auto}
+.modal{display:none;position:fixed;inset:0;z-index:30;background:#10243dcc;backdrop-filter:blur(8px);padding:18px;overflow:auto}
 .modal.show{display:grid;place-items:center}
-.dialog{width:min(620px,100%);background:#0d1726;border:1px solid #24506a;border-radius:20px;padding:24px}
+.dialog{
+ width:min(620px,100%);background:#fff;border:1px solid var(--line);
+ border-radius:20px;padding:24px;box-shadow:0 20px 70px #17345125;
+}
 .dialog h2{margin-top:0}
 .formgrid{display:grid;gap:12px}
 .field{display:grid;gap:5px;color:var(--muted);font-size:13px}
-.field input,.field textarea,.field select{width:100%;background:#080f1c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;font:14px Vazirmatn}
+.field input,.field textarea,.field select{
+ width:100%;background:#f8fbff;color:var(--text);
+ border:1px solid var(--line);border-radius:10px;padding:11px;font:14px Vazirmatn;
+}
 .field textarea{min-height:85px;resize:vertical}
 .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
 .lesson-modal .dialog{width:min(800px,100%)}
-.video{aspect-ratio:16/9;background:#030914;border-radius:14px;overflow:hidden;margin:14px 0}
+.video{aspect-ratio:16/9;background:#eaf4ff;border-radius:14px;overflow:hidden;margin:14px 0}
 .video iframe{width:100%;height:100%;border:0}
 .video-placeholder{height:100%;display:grid;place-items:center;color:var(--muted);padding:20px;text-align:center}
 .lesson-desc{color:var(--muted);white-space:pre-wrap}
-@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-art{min-height:230px}.grid{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}.navlinks{display:none}}
-@media(max-width:540px){.grid{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.hero h1{font-size:39px}.section-head{align-items:start;flex-direction:column}.nav{height:66px}.brand{font-size:17px}}
+.comments-area{margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.comments-area h3{margin:0 0 15px}
+.comment-form{display:grid;gap:10px;background:#f5faff;padding:15px;border:1px solid var(--line);border-radius:14px}
+.comment-form input,.comment-form textarea{
+ width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;
+ background:#fff;color:var(--text);font:14px Vazirmatn;
+}
+.comment-form textarea{min-height:85px;resize:vertical}
+.comment-list{display:grid;gap:12px;margin-top:18px}
+.comment-item{background:#f8fbff;border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+.comment-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.comment-author{font-weight:800;color:#1765b8}
+.comment-date{font-size:11px;color:var(--muted)}
+.comment-text{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:7px;color:#405c75;font-size:14px}
+.comment-status{font-size:13px;color:var(--muted);margin:8px 0}
+@media(max-width:800px){
+ .hero{grid-template-columns:1fr;padding-top:48px}
+ .hero-art{min-height:230px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .about{grid-template-columns:1fr}
+ .navlinks{display:none}
+}
+@media(max-width:540px){
+ .grid{grid-template-columns:1fr}
+ .stats{gap:8px}
+ .stat{padding:12px}
+ .stat strong{font-size:20px}
+ .hero h1{font-size:39px}
+ .section-head{align-items:start;flex-direction:column}
+ .nav{min-height:66px}
+ .brand{font-size:17px}
+}
 </style>
 </head>
 <body>
 <header>
 <div class="wrap nav">
 <a class="brand" href="#"><span class="logo">⌘</span><span>ARDUINO <span class="glow">PARHAM</span></span></a>
-<nav class="navlinks"><a href="#courses">آموزش‌ها</a><a href="#about">درباره سایت</a><a href="#how">شروع یادگیری</a></nav>
+<nav class="navlinks">
+<a href="#courses">آموزش‌ها</a>
+<a href="#about">درباره سایت</a>
+<a href="#how">شروع یادگیری</a>
+</nav>
 <button class="btn" id="adminButton" onclick="adminAction()">ورود مدیر</button>
 </div>
 </header>
@@ -120,7 +260,9 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 </div>
 
 <section id="courses">
-<div class="section-head"><div><h2>کتابخانه آموزش‌ها</h2><p>یک موضوع انتخاب کن و دست‌به‌کار شو.</p></div></div>
+<div class="section-head">
+<div><h2>کتابخانه آموزش‌ها</h2><p>یک موضوع انتخاب کن و دست‌به‌کار شو.</p></div>
+</div>
 <div class="tools">
 <input id="search" class="search" placeholder="جست‌وجو بین آموزش‌ها..." oninput="render()">
 <div class="filters" id="filters">
@@ -135,10 +277,16 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 </section>
 
 <section id="about">
-<div class="section-head"><div><h2>اینجا چه خبره؟</h2><p>یک مسیر ساده برای ساختن چیزهای واقعی.</p></div></div>
+<div class="section-head">
+<div><h2>اینجا چه خبره؟</h2><p>یک مسیر ساده برای ساختن چیزهای واقعی.</p></div>
+</div>
 <div class="about">
-<div class="about-box"><h3>🔧 یادگیری با ساختن</h3><p>به‌جای حفظ‌کردن مطالب، مدار می‌بندیم، کد می‌نویسیم، آزمایش می‌کنیم و از اشتباه‌ها یاد می‌گیریم. هر آموزش می‌تواند شامل توضیح، لیست قطعات، نقشه اتصال و ویدئو باشد.</p></div>
-<div class="about-box" id="how"><h3>🚀 مسیر پیشنهادی</h3>
+<div class="about-box">
+<h3>🔧 یادگیری با ساختن</h3>
+<p>به‌جای حفظ‌کردن مطالب، مدار می‌بندیم، کد می‌نویسیم، آزمایش می‌کنیم و از اشتباه‌ها یاد می‌گیریم. هر آموزش می‌تواند شامل توضیح، لیست قطعات، نقشه اتصال و ویدئو باشد.</p>
+</div>
+<div class="about-box" id="how">
+<h3>🚀 مسیر پیشنهادی</h3>
 <div class="steps">
 <div class="step"><span class="num">۱</span> آشنایی با آردوینو و قطعات پایه</div>
 <div class="step"><span class="num">۲</span> شناخت ورودی‌ها، خروجی‌ها و سنسورها</div>
@@ -150,7 +298,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 </section>
 </main>
 
-<footer><div class="wrap footer-in"><span>© <span id="year"></span> Arduino Parham</span><span>ساخته‌شده برای عاشقان الکترونیک ⚡</span></div></footer>
+<footer>
+<div class="wrap footer-in">
+<span>© <span id="year"></span> Arduino Parham</span>
+<span>ساخته‌شده برای عاشقان الکترونیک ⚡</span>
+</div>
+</footer>
 
 <div class="modal" id="loginModal">
 <div class="dialog">
@@ -159,7 +312,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <form id="loginForm" class="formgrid">
 <label class="field">ایمیل<input name="email" type="email" required></label>
 <label class="field">رمز عبور<input name="password" type="password" required></label>
-<div id="loginError" style="color:#ff7777"></div>
+<div id="loginError" style="color:#d04444"></div>
 <div class="form-actions">
 <button type="button" class="btn secondary" onclick="closeLogin()">انصراف</button>
 <button class="btn" type="submit">ورود</button>
@@ -178,7 +331,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <label class="field">توضیح کوتاه<textarea name="desc" required maxlength="220" placeholder="در این آموزش چه چیزی یاد می‌گیریم؟"></textarea></label>
 <label class="field">لینک ویدئو (اختیاری؛ لینک Embed یوتیوب)<input name="video" placeholder="https://www.youtube.com/embed/VIDEO_ID"></label>
 <label class="field">متن کامل آموزش / نکات اتصال<textarea name="body" placeholder="قطعات موردنیاز، سیم‌کشی و مراحل اجرا..."></textarea></label>
-<div id="addError" style="color:#ff7777"></div>
+<div id="addError" style="color:#d04444"></div>
 <div class="form-actions">
 <button type="button" class="btn secondary" onclick="closeAdd()">انصراف</button>
 <button class="btn" type="submit" id="saveButton">انتشار آموزش</button>
@@ -196,6 +349,17 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <div id="lessonVideo" class="video"></div>
 <p id="lessonDesc" class="lesson-desc"></p>
 <div id="lessonBody" class="lesson-desc"></div>
+
+<div class="comments-area">
+<h3>💬 نظرات کاربران</h3>
+<form id="commentForm" class="comment-form">
+<input id="commentAuthor" maxlength="40" minlength="2" placeholder="نام شما" required>
+<textarea id="commentContent" maxlength="1000" minlength="1" placeholder="نظر خودت رو درباره این آموزش بنویس..." required></textarea>
+<button class="btn" type="submit" id="commentButton">ثبت نظر</button>
+<div id="commentStatus" class="comment-status" aria-live="polite">برای ثبت نظر، نام و متن دیدگاه را وارد کن.</div>
+</form>
+<div id="commentList" class="comment-list"></div>
+</div>
 </div>
 </div>
 
@@ -205,14 +369,43 @@ const SUPABASE_URL = "https://zxopvciaucrvhrcnubhb.supabase.co";
 const SUPABASE_KEY = "sb_publishable_sMTwYVNU0XKw1SsPI3wZxA_rIijYtoo";
 
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 let currentUser = null;
 let databaseLessons = [];
 let active = "همه";
+let currentLessonKey = null;
 
 const starter = [
-{id:"sample-1",title:"اولین قدم با آردوینو",cat:"مقدماتی",desc:"با برد Arduino Uno آشنا شو و اولین برنامه‌ات را اجرا کن.",body:"قطعات موردنیاز: برد Arduino Uno، کابل USB و یک LED برای تمرین.\n\nابتدا Arduino IDE را نصب کن، برد و پورت صحیح را انتخاب کن و مثال Blink را باز کن. کد را آپلود کن و چشمک‌زدن LED روی برد را ببین.\n\nنکته: قبل از تغییر سیم‌کشی، برق مدار را قطع کن.",video:"",icon:"⌘",time:"۵ دقیقه"},
-{id:"sample-2",title:"کار با سنسور اولتراسونیک HC-SR04",cat:"سنسورها",desc:"اندازه‌گیری فاصله اجسام با ارسال و دریافت امواج صوتی.",body:"قطعات: Arduino Uno و سنسور HC-SR04.\n\nVCC سنسور به 5V، GND به GND، پایه Trig به یک پایه دیجیتال و Echo به پایه دیجیتال دیگر وصل می‌شود.\n\nبا ارسال پالس به Trig و اندازه‌گیری زمان برگشت Echo می‌توان فاصله را محاسبه کرد.",video:"",icon:"◉",time:"۸ دقیقه"},
-{id:"sample-3",title:"ساخت چراغ چشمک‌زن LED",cat:"پروژه‌ها",desc:"یک پروژه ساده برای یادگیری خروجی دیجیتال و کنترل LED.",body:"قطعات: Arduino Uno، یک LED و مقاومت مناسب.\n\nپایه مثبت LED را از طریق مقاومت به پایه دیجیتال 13 و پایه منفی را به GND وصل کن. سپس مثال Blink را اجرا کن.\n\nبا تغییر مقدار delay سرعت چشمک‌زدن را عوض کن.",video:"",icon:"✦",time:"۶ دقیقه"}
+{
+ id:"sample-1",
+ title:"اولین قدم با آردوینو",
+ cat:"مقدماتی",
+ desc:"با برد Arduino Uno آشنا شو و اولین برنامه‌ات را اجرا کن.",
+ body:"قطعات موردنیاز: برد Arduino Uno، کابل USB و یک LED برای تمرین.\n\nابتدا Arduino IDE را نصب کن، برد و پورت صحیح را انتخاب کن و مثال Blink را باز کن. کد را آپلود کن و چشمک‌زدن LED روی برد را ببین.\n\nنکته: قبل از تغییر سیم‌کشی، برق مدار را قطع کن.",
+ video:"",
+ icon:"⌘",
+ time:"۵ دقیقه"
+},
+{
+ id:"sample-2",
+ title:"کار با سنسور اولتراسونیک HC-SR04",
+ cat:"سنسورها",
+ desc:"اندازه‌گیری فاصله اجسام با ارسال و دریافت امواج صوتی.",
+ body:"قطعات: Arduino Uno و سنسور HC-SR04.\n\nVCC سنسور به 5V، GND به GND، پایه Trig به یک پایه دیجیتال و Echo به پایه دیجیتال دیگر وصل می‌شود.\n\nبا ارسال پالس به Trig و اندازه‌گیری زمان برگشت Echo می‌توان فاصله را محاسبه کرد.",
+ video:"",
+ icon:"◉",
+ time:"۸ دقیقه"
+},
+{
+ id:"sample-3",
+ title:"ساخت چراغ چشمک‌زن LED",
+ cat:"پروژه‌ها",
+ desc:"یک پروژه ساده برای یادگیری خروجی دیجیتال و کنترل LED.",
+ body:"قطعات: Arduino Uno، یک LED و مقاومت مناسب.\n\nپایه مثبت LED را از طریق مقاومت به پایه دیجیتال 13 و پایه منفی را به GND وصل کن. سپس مثال Blink را اجرا کن.\n\nبا تغییر مقدار delay سرعت چشمک‌زدن را عوض کن.",
+ video:"",
+ icon:"✦",
+ time:"۶ دقیقه"
+}
 ];
 
 let lessons = [...starter];
@@ -220,8 +413,12 @@ let lessons = [...starter];
 const faNum = n => new Intl.NumberFormat("fa-IR").format(n);
 
 function esc(s) {
- return String(s || "").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ return String(s ?? "").replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
  }[c]));
 }
 
@@ -231,11 +428,8 @@ function updateAdminButton() {
 }
 
 function adminAction() {
- if (currentUser) {
-  logout();
- } else {
-  openLogin();
- }
+ if (currentUser) logout();
+ else openLogin();
 }
 
 function openLogin() {
@@ -263,6 +457,7 @@ function closeAdd() {
 function closeLesson() {
  document.getElementById("lessonModal").classList.remove("show");
  document.getElementById("lessonVideo").innerHTML = "";
+ currentLessonKey = null;
 }
 
 function setCat(c,b) {
@@ -274,6 +469,7 @@ function setCat(c,b) {
 
 function render() {
  const q = document.getElementById("search").value.trim().toLowerCase();
+
  const list = lessons.filter(x =>
   (active === "همه" || x.cat === active) &&
   (`${x.title} ${x.desc} ${x.cat}`).toLowerCase().includes(q)
@@ -281,7 +477,10 @@ function render() {
 
  document.getElementById("cards").innerHTML = list.map(x=>`
   <article class="card">
-   <div class="thumb"><small>${esc(x.cat)}</small>${esc(x.icon || "⌘")}</div>
+   <div class="thumb">
+    <small>${esc(x.cat)}</small>
+    ${esc(x.icon || "⌘")}
+   </div>
    <div class="card-body">
     <h3>${esc(x.title)}</h3>
     <p>${esc(x.desc)}</p>
@@ -304,8 +503,7 @@ async function loadLessons() {
   .order("created_at",{ascending:false});
 
  if (error) {
-  console.error(error);
-  alert("دریافت آموزش‌ها از دیتابیس انجام نشد. اتصال اینترنت و تنظیمات Supabase را بررسی کن.");
+  console.error("Lessons error:",error);
   return;
  }
 
@@ -324,9 +522,11 @@ async function loadLessons() {
  render();
 }
 
-function openLesson(id) {
+async function openLesson(id) {
  const x = lessons.find(y=>String(y.id) === String(id));
  if (!x) return;
+
+ currentLessonKey = String(x.id);
 
  document.getElementById("lessonTitle").textContent = x.title;
  document.getElementById("lessonDesc").textContent = x.desc;
@@ -346,8 +546,98 @@ function openLesson(id) {
   v.innerHTML = '<div class="video-placeholder">🎬<br>هنوز ویدئویی برای این آموزش ثبت نشده است.</div>';
  }
 
+ document.getElementById("commentList").innerHTML = "";
+ document.getElementById("commentStatus").textContent = "در حال دریافت نظرات...";
  document.getElementById("lessonModal").classList.add("show");
+
+ await loadComments(currentLessonKey);
 }
+
+async function loadComments(lessonKey) {
+ const list = document.getElementById("commentList");
+ const status = document.getElementById("commentStatus");
+
+ list.innerHTML = "";
+ status.textContent = "در حال دریافت نظرات...";
+
+ const {data,error} = await db
+  .from("comments")
+  .select("id,author,content,created_at")
+  .eq("lesson_key",lessonKey)
+  .order("created_at",{ascending:false});
+
+ if (currentLessonKey !== lessonKey) return;
+
+ if (error) {
+  console.error("Comments error:",error);
+  status.textContent = "دریافت نظرات انجام نشد. تنظیمات جدول comments را بررسی کن.";
+  return;
+ }
+
+ status.textContent = data.length
+  ? `${faNum(data.length)} نظر برای این آموزش ثبت شده است.`
+  : "هنوز نظری ثبت نشده؛ اولین نفر باش!";
+
+ list.innerHTML = data.map(comment=>`
+  <article class="comment-item">
+   <div class="comment-top">
+    <span class="comment-author">${esc(comment.author)}</span>
+    <span class="comment-date">${comment.created_at ? new Date(comment.created_at).toLocaleString("fa-IR") : ""}</span>
+   </div>
+   <div class="comment-text">${esc(comment.content)}</div>
+  </article>
+ `).join("");
+}
+
+document.getElementById("commentForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+
+ const authorInput = document.getElementById("commentAuthor");
+ const contentInput = document.getElementById("commentContent");
+ const button = document.getElementById("commentButton");
+ const status = document.getElementById("commentStatus");
+
+ if (!currentLessonKey) return;
+
+ const lessonKey = currentLessonKey;
+ const author = authorInput.value.trim();
+ const content = contentInput.value.trim();
+
+ if (author.length < 2 || author.length > 40) {
+  status.textContent = "نام باید بین ۲ تا ۴۰ نویسه باشد.";
+  return;
+ }
+
+ if (!content || content.length > 1000) {
+  status.textContent = "متن نظر باید بین ۱ تا ۱۰۰۰ نویسه باشد.";
+  return;
+ }
+
+ button.disabled = true;
+ button.textContent = "در حال ثبت...";
+ status.textContent = "نظر شما در حال ارسال است...";
+
+ const {error} = await db
+  .from("comments")
+  .insert({
+   lesson_key:lessonKey,
+   author:author,
+   content:content
+  });
+
+ button.disabled = false;
+ button.textContent = "ثبت نظر";
+
+ if (error) {
+  console.error("Comment insert error:",error);
+  status.textContent = "ثبت نظر انجام نشد. اتصال یا دسترسی جدول comments را بررسی کن.";
+  return;
+ }
+
+ contentInput.value = "";
+ status.textContent = "نظر با موفقیت ثبت شد.";
+ await loadComments(lessonKey);
+});
 
 document.getElementById("loginForm").addEventListener("submit",async e=>{
  e.preventDefault();
@@ -375,10 +665,12 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
 
 async function logout() {
  const {error} = await db.auth.signOut();
+
  if (error) {
   alert("خروج انجام نشد.");
   return;
  }
+
  currentUser = null;
  updateAdminButton();
  alert("از حساب مدیر خارج شدی.");
@@ -426,7 +718,7 @@ document.getElementById("addForm").addEventListener("submit",async e=>{
  button.textContent = "انتشار آموزش";
 
  if (error) {
-  console.error(error);
+  console.error("Add lesson error:",error);
   errorBox.textContent = "انتشار انجام نشد. دسترسی دیتابیس را بررسی کن.";
   return;
  }
@@ -447,10 +739,12 @@ document.getElementById("addForm").addEventListener("submit",async e=>{
 
  e.target.reset();
  closeAdd();
+
  active = "همه";
  document.querySelectorAll(".filter").forEach(b=>
   b.classList.toggle("active",b.dataset.cat === "همه")
  );
+
  render();
  document.getElementById("courses").scrollIntoView();
  alert("آموزش با موفقیت منتشر شد!");
@@ -464,7 +758,13 @@ db.auth.onAuthStateChange((_event,session)=>{
 document.getElementById("year").textContent = new Date().getFullYear();
 updateAdminButton();
 render();
-loadLessons();
+
+(async function init(){
+ const {data} = await db.auth.getSession();
+ currentUser = data.session?.user || null;
+ updateAdminButton();
+ await loadLessons();
+})();
 </script>
 </body>
 </html>
